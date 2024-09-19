@@ -33,3 +33,17 @@ En la carpeta `playlist` tenéis la práctica la cual consiste en unos primeros 
 - **Visual Studio Code (VSCode)**
 
 ¡Esperamos que disfrutes del curso y aproveches al máximo las oportunidades de práctica para fortalecer tus habilidades en JavaScript!
+
+---
+
+## Solución práctica
+
+La solución de los ejercicios de la práctica están en la carpeta [`exercises`](https://github.com/KeepCodingWeb17/intro-js/blob/main/exercises) y el de la playlist en la carpeta [`playlist`](https://github.com/KeepCodingWeb17/intro-js/blob/main/playlist).
+
+Además de esto, aunque no se solicitó, he añadido un archivo de prueba `playlist.test.js` para probar los métodos de la playlist. Estas pruebas, aunque no se incluyan en el módulo, están creados con Jest. Les animo a que, cuando lleguen al módulo de tests, regresen a este repositorio para echarles un vistazo.
+
+En caso de querrer ejecutar estos tests se pude hacer lo siguiente:
+
+1. Tener node instalado
+2. Ejecutar `npm install`
+3. Ejecutar `npm t`
