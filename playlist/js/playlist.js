@@ -81,6 +81,9 @@ const musicCatalog = () => {
     if (!hasPlaylist) {
       throw new Error('Playlist not found');
     }
+    if (!hasPlaylist.songs.find((song) => song.title === title)) {
+      throw new Error('Song not found');
+    }
     playlists = playlists.map((playlist) => {
       if (playlist.name === playlistName) {
         return {
@@ -139,11 +142,8 @@ const musicCatalog = () => {
           songs: playlist.songs.sort((a, b) => {
             if (criterion === 'duration') {
               return a.duration - b.duration;
-            } else if (criterion === 'title' || criterion === 'artist') {
-              return a[criterion].localeCompare(b[criterion]);
-            } else {
-              throw new Error('Invalid sorting criterion');
             }
+            return a[criterion].localeCompare(b[criterion]);
           }),
         };
       }
