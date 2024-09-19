@@ -24,6 +24,14 @@ const musicCatalog = () => {
    */
   let playlists = [];
 
+  const findPlaylist = (playlistName) => {
+    const playlist = playlists.find((playlist) => playlist.name === playlistName);
+    if (!playlist) {
+      throw new Error('Playlist not found');
+    }
+    return playlist;
+  }
+
   /**
    * Gets all playlists in the catalog.
    * @returns {Playlist[]} The list of all playlists.
@@ -55,10 +63,7 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist is not found.
    */
   const addSongToPlaylist = (playlistName, song) => {
-    const hasPlaylist = playlists.find((p) => p.name === playlistName);
-    if (!hasPlaylist) {
-      throw new Error('Playlist not found');
-    }
+    findPlaylist(playlistName);
     playlists = playlists.map((playlist) => {
       if (playlist.name === playlistName) {
         return {
@@ -77,10 +82,7 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist or song is not found.
    */
   const removeSongFromPlaylist = (playlistName, title) => {
-    const hasPlaylist = playlists.find((p) => p.name === playlistName);
-    if (!hasPlaylist) {
-      throw new Error('Playlist not found');
-    }
+    const hasPlaylist = findPlaylist(playlistName);
     if (!hasPlaylist.songs.find((song) => song.title === title)) {
       throw new Error('Song not found');
     }
@@ -128,10 +130,7 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist is not found or the criterion is invalid.
    */
   const sortSongs = (playlistName, criterion) => {
-    const playlist = playlists.find((p) => p.name === playlistName);
-    if (!playlist) {
-      throw new Error('Playlist not found');
-    }
+    findPlaylist(playlistName);
     if (!['title', 'artist', 'duration'].includes(criterion)) {
       throw new Error('Invalid sorting criterion');
     }
